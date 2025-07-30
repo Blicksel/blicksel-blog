@@ -1,0 +1,85 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "image", widget: "image"}
+      - {label: "Excerpt", name: "excerpt", widget: "text"}
+      - {label: "Tags", name: "tags", widget: "list", default: []}
+      - {label: "SEO Title", name: "seoTitle", widget: "string", required: false}
+      - {label: "SEO Description", name: "seoDescription", widget: "text", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "products"
+    label: "Products"
+    folder: "src/content/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Price", name: "price", widget: "number", value_type: "float"}
+      - {label: "Original Price", name: "originalPrice", widget: "number", value_type: "float", required: false}
+      - {label: "Product Image", name: "image", widget: "image"}
+      - {label: "Rating", name: "rating", widget: "number", value_type: "float", min: 0, max: 5}
+      - {label: "Review Count", name: "reviewCount", widget: "number", value_type: "int"}
+      - {label: "Category", name: "category", widget: "select", options: ["electronics", "home", "fitness", "books", "fashion"]}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Features", name: "features", widget: "list", field: {label: "Feature", name: "feature", widget: "string"}}
+      - {label: "Affiliate URL", name: "affiliateUrl", widget: "string"}
+      - {label: "Badge", name: "badge", widget: "string", required: false}
+      - {label: "SEO Title", name: "seoTitle", widget: "string", required: false}
+      - {label: "SEO Description", name: "seoDescription", widget: "text", required: false}
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Homepage"
+        name: "homepage"
+        file: "src/content/pages/homepage.md"
+        fields:
+          - {label: "Hero Title", name: "heroTitle", widget: "string"}
+          - {label: "Hero Subtitle", name: "heroSubtitle", widget: "text"}
+          - {label: "Hero Description", name: "heroDescription", widget: "text"}
+          - {label: "Hero Button Text", name: "heroButtonText", widget: "string"}
+          - {label: "Featured Products Title", name: "featuredTitle", widget: "string"}
+          - {label: "Featured Products Description", name: "featuredDescription", widget: "text"}
+          - {label: "SEO Title", name: "seoTitle", widget: "string"}
+          - {label: "SEO Description", name: "seoDescription", widget: "text"}
+
+      - label: "About Page"
+        name: "about"
+        file: "src/content/pages/about.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Featured Image", name: "image", widget: "image"}
+          - {label: "Content", name: "body", widget: "markdown"}
+          - {label: "SEO Title", name: "seoTitle", widget: "string"}
+          - {label: "SEO Description", name: "seoDescription", widget: "text"}
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "General Settings"
+        name: "general"
+        file: "src/content/settings/general.md"
+        fields:
+          - {label: "Site Title", name: "siteTitle", widget: "string"}
+          - {label: "Site Description", name: "siteDescription", widget: "text"}
+          - {label: "Logo", name: "logo", widget: "image", required: false}
+          - {label: "Contact Email", name: "contactEmail", widget: "string"}
+          - {label: "Contact Phone", name: "contactPhone", widget: "string"}
+          - {label: "Address", name: "address", widget: "text"}
+          - {label: "Amazon Associate ID", name: "amazonAssociateId", widget: "string"}
+          - {label: "Google Analytics ID", name: "googleAnalyticsId", widget: "string", required: false}
+          - {label: "Google AdSense ID", name: "googleAdsenseId", widget: "string", required: false}
