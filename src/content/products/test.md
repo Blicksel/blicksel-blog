@@ -5,7 +5,7 @@ originalPrice: -2
 image: /images/uploads/best-laptop-stand-under-50.jpg
 rating: 2
 reviewCount: 4
-category: electronics
+category: fashion
 description: testing
 features:
   - test
